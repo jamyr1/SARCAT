@@ -24,7 +24,7 @@
                     {{#each summary}}
                     <div>
                         <span class="quickName">
-                    {{this.name}}: 
+                    {{this.name}}:
                 </span>
                         <span class="quickVal">
                     {{this.val}}
@@ -45,6 +45,9 @@
                 </nav>
             </div>
             {{#each thisArray}} {{> yield}} {{/each}}
+            {{#if loading}}
+            <div class="centered"><div class="loading-container"><div class="h1">loading.....</div></div></div>
+            {{/if}}
         </div>
     </div>
 </template>

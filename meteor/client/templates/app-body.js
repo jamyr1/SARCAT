@@ -123,6 +123,9 @@ Template.appBody.helpers({
     },
     samplerecords: function() {
         return sampleRecords.find();
+    },
+    loading:function(){
+      return Session.get('loading');
     }
 });
 Template.appBody.events({

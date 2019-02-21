@@ -28,6 +28,10 @@ mkdir -p $dest
 
 cd $dest
 (cd $home/meteor && meteor reset && meteor build --architecture $meteorArc $dest)
+echo DONE!
+exit
+
+
 #cp -r $home/.test/meteor.tar.gz $dest
 tar -zxvf meteor.tar.gz
 
@@ -111,9 +115,9 @@ if [ "$windows" == true ]; then
 fi
 
 
-#mongod=`find bin -name "mongod" -type f` 
-#node=./`find bin -name "node" -type f` 
-#npm=`find . -name "npm" -type l` 
+#mongod=`find bin -name "mongod" -type f`
+#node=./`find bin -name "node" -type f`
+#npm=`find . -name "npm" -type l`
 
 
 
@@ -142,4 +146,3 @@ echo removing $targetDir
 rm -rf $targetDir
 
 echo DONE!
-

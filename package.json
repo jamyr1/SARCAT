@@ -1,6 +1,6 @@
 {
     "name": "sarcat",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "SAR data management tool",
     "author": "Azimuth1",
     "engines": {

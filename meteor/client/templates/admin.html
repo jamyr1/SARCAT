@@ -11,10 +11,10 @@
                 </button>
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav" role="tablist">
+                <ul class="nav navbar-nav adminTabs" role="tablist">
                     <li role="presentation" class="active"><a href="#profile" aria-controls="home" role="tab" data-toggle="tab" class="white">Organization Profile</a> </li>
-                    <li role="presentation"><a href="#roles" aria-controls="profile" role="tab" data-toggle="tab" class="white">User Roles</a> </li>
-                    <li role="presentation"><a href="#history" aria-controls="profile" role="tab" data-toggle="tab" class="white">Editing History</a> </li>
+                    <li role="presentation"><a href="#userData" aria-controls="profile" role="tab" data-toggle="tab" class="white">User Roles</a> </li>
+                    <li role="presentation"><a href="#audit" aria-controls="profile" role="tab" data-toggle="tab" class="white">Editing History</a> </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {{#if hasLogo}}
@@ -133,7 +133,7 @@
                 </div>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane pad00 scroll" id="roles">
+        <div role="tabpanel" class="tab-pane pad00 scroll" id="userData">
             {{#if userAlert}}
             <div class="fullScreen strong text-center">
             </div>
@@ -153,27 +153,24 @@
                         </tr>
                     </thead>
                     <tbody class='white-bg'>
-                        {{#if noUsers}}
-                        <tr>
-                            <td colspan="5" class="text-center text-default">You are the only user!</td>
-                        </tr>
-                        {{/if}} {{#each userRoleList}}
+                    
+                        {{#each userRoleList}}
                         <tr>
                             <td>{{this.username}}</td>
                             <td>{{userEmail}}</td>
                             <td>
                                 <div class="admin_ChangeRole">
                                     <label class="radio-inline">
-                                        <input class='adminUserRoles' data-user="{{this._id}}" type="radio" name="role_{{this._id}}" value="pending" checked="{{rolekIsChecked}}">Pending
+                                        <input class='adminUserRoles' data-user="{{this._id}}" type="radio" name="role_{{this._id}}" value="pending" checked="{{roleIsChecked this.roles 'pending'}}">Pending
                                     </label>
                                     <label class="radio-inline">
-                                        <input class='adminUserRoles' data-user="{{this._id}}" type="radio" name="role_{{this._id}}" value="viewer" checked="{{rolekIsChecked}}">Viewer
+                                        <input class='adminUserRoles' data-user="{{this._id}}" type="radio" name="role_{{this._id}}" value="viewer" checked="{{roleIsChecked this.roles 'viewer'}}">Viewer
                                     </label>
                                     <label class="radio-inline">
-                                        <input class='adminUserRoles' data-user="{{this._id}}" type="radio" name="role_{{this._id}}" value="editor" checked="{{roleIsCkhecked}}">Editor
+                                        <input class='adminUserRoles' data-user="{{this._id}}" type="radio" name="role_{{this._id}}" value="editor" checked="{{roleIsChecked this.roles 'editor'}}">Editor
                                     </label>
                                     <label class="radio-inline">
-                                        <input class='adminUserRoles' data-user="{{this._id}}" type="radio" name="role_{{this._id}}" value="admin" checked="{{roleIsCkhecked}}"> Admin
+                                        <input class='adminUserRoles' data-user="{{this._id}}" type="radio" name="role_{{this._id}}" value="admin" checked="{{roleIsChecked this.roles 'admin'}}"> Admin
                                     </label>
                                 </div>
                             </td>
@@ -189,8 +186,8 @@
                 </table>
             </div>
         </div>
-        <div role="tabpanel" class="tab-pane pad00 scroll white" id="history">
-            {{#if hasHistory}} {{> reactiveTable settings=RecordsAudit}} {{/if}}
+        <div role="tabpanel" class="tab-pane pad00 scroll white" id="audit">
+           {{> reactiveTable settings=RecordsAudit}}
         </div>
     </div>
     {{/if}}

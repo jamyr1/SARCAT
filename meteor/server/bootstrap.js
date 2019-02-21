@@ -1,5 +1,6 @@
 (function () {
     Meteor.startup(function () {
+      //Config.remove("k86XNmfs8tSmgAYXY")
         console.log('starting sarcat server');
         //console.log(process.env.METEOR_SETTINGS);
         //var METEOR_SETTINGS = JSON.parse(process.env.METEOR_SETTINGS);
@@ -116,4 +117,3 @@
         console.log('sarcat running at: ' + process.env.ROOT_URL + ':' + process.env.PORT)
     });
 })();
-
